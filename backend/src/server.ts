@@ -1,7 +1,7 @@
 
-import { app } from "./app";
+import { app } from "./app.ts";
 import mongoose from "mongoose";
-import { validEnvVariables } from "./utils/validateEnv";
+import { validEnvVariables } from "./utils/validateEnv.ts";
 
 
 const port = validEnvVariables.PORT;

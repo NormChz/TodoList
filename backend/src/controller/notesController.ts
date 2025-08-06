@@ -1,8 +1,8 @@
 import { RequestHandler } from "express";
-import { NoteModel } from "../model/note";
+import { NoteModel } from "../model/note.ts";
 import createHttpError from "http-errors";
 import mongoose from "mongoose";
-import { assertIsDefined } from "../utils/assertIsDefined";
+import { assertIsDefined } from "../utils/assertIsDefined.ts";
 
 interface NotesController {
   getNotes: RequestHandler,
