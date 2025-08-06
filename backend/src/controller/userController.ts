@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { UserModel } from "../model/user.ts";
+import { UserModel } from "../model/user";
 import createHttpError from "http-errors";
 import bcrypt from 'bcrypt';
 

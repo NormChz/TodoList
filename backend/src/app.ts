@@ -1,15 +1,15 @@
 import "dotenv/config";
-import { validEnvVariables } from './utils/validateEnv.ts';
+import { validEnvVariables } from './utils/validateEnv';
 import Express from "express";
 import { NextFunction, Request, Response } from "express";
-import { notesRouter } from "./route/notesRoute.ts";
-import { userRouter } from "./route/userRoute.ts";
+import { notesRouter } from "./route/notesRoute";
+import { userRouter } from "./route/userRoute";
 import morgan from 'morgan';
 import createHttpError, { isHttpError } from "http-errors";
 import cors from 'cors';
 import session from 'express-session'
 import MongoStore from 'connect-mongo';
-import { isAuthenticatedUser } from "./middleware/authentication.ts";
+import { isAuthenticatedUser } from "./middleware/authentication";
 
 
 export const app = Express();
