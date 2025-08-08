@@ -14,8 +14,13 @@ import { isAuthenticatedUser } from "./middleware/authentication.js";
 
 export const app = Express();
 
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1);
+}
+
+
 app.use(cors({
-  origin: 'http://localhost:5173', // Replace with your client-side URL
+  origin: validEnvVariables.CLIENT_URL, // Replace with your client-side URL
   credentials: true,
 }));
 
@@ -30,7 +35,7 @@ app.use(session({
   cookie: {
     maxAge: 60 * 60 * 1000, // 1000 = 1000ms = 1sec
     secure: false, // change to TRUE in production ====>> IMPORTANT
-    // httpOnly: true, // cookie can only be accessed directly when it reaches the server. JS code like document.cookie will not work with httpOnly.
+    httpOnly: true, // cookie can only be accessed directly when it reaches the server. JS code like document.cookie will not work with httpOnly.
   },
   rolling: true, // as long the user is using the website, the cookie is refreshed
   store: MongoStore.create({ // if we don't specify, the sessions will be stored in memory.
