@@ -7,7 +7,7 @@ import { fetchData } from "./genFetchData";
  * @returns json note data.
  */
 export const fetchAllNotes = async (): Promise<Note[]> => {
-  const response = await fetchData('http://localhost:5000/api/notes', { method: 'GET', credentials: 'include' });
+  const response = await fetchData(import.meta.env.VITE_API_BASE_URL + '/notes', { method: 'GET', credentials: 'include' });
   return response.json();
 }
 
@@ -24,7 +24,7 @@ export interface CreateUpdateNoteInput {
  */
 export const createNote = async (note: CreateUpdateNoteInput): Promise<Note> => {
 
-  const response = await fetchData('http://localhost:5000/api/notes/create', {
+  const response = await fetchData(import.meta.env.VITE_API_BASE_URL + '/notes/create', {
     method: 'POST',
     headers: {
       "Content-Type": "application/json"
@@ -43,7 +43,7 @@ export const createNote = async (note: CreateUpdateNoteInput): Promise<Note> => 
  */
 export const deleteNote = async (noteID: string) => {
 
-  await fetchData('http://localhost:5000/api/notes/' + noteID, {
+  await fetchData(import.meta.env.VITE_API_BASE_URL + '/notes/' + noteID, {
     method: 'DELETE',
     headers: {
       "Content-Type": "application/json"
@@ -61,7 +61,7 @@ export const deleteNote = async (noteID: string) => {
  */
 export const updateNote = async (id: string, note: CreateUpdateNoteInput): Promise<Note> => {
 
-  const response = await fetchData('http://localhost:5000/api/notes/' + id, {
+  const response = await fetchData(import.meta.env.VITE_API_BASE_URL + '/notes/' + id, {
     method: 'PATCH',
     headers: {
       "Content-Type": "application/json"

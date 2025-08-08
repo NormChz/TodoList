@@ -14,7 +14,7 @@ interface LoginCredentials {
 
 export const getLoggedinUser = async (): Promise<User | null> => {
 
-  const response = await fetch('http://localhost:5000/api/user', {
+  const response = await fetch(import.meta.env.VITE_API_BASE_URL + '/user', {
     method: 'GET',
     credentials: 'include'
   });
@@ -40,7 +40,7 @@ export const getLoggedinUser = async (): Promise<User | null> => {
 }
 
 export const signup = async (credentials: SignUpCredentials): Promise<User> => {
-  const response = await fetchData('http://localhost:5000/api/user/signup', {
+  const response = await fetchData(import.meta.env.VITE_API_BASE_URL + '/user/signup', {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
@@ -53,7 +53,7 @@ export const signup = async (credentials: SignUpCredentials): Promise<User> => {
 
 export const login = async (credentials: LoginCredentials): Promise<User> => {
 
-  const response = await fetchData('http://localhost:5000/api/user/login', {
+  const response = await fetchData(import.meta.env.VITE_API_BASE_URL + '/user/login', {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
@@ -66,7 +66,7 @@ export const login = async (credentials: LoginCredentials): Promise<User> => {
 }
 
 export const logout = async (): Promise<void> => {
-  await fetchData('http://localhost:5000/api/user/logout', {
+  await fetchData(import.meta.env.VITE_API_BASE_URL + '/user/logout', {
     method: 'POST',
     credentials: 'include', // <-- instruct browser to send credentials, or session will be created every time.
   });
