@@ -1,3 +1,9 @@
+html, body, #root {
+  min-height: 100vh; /* setting this to min-height: 100vh instead of height: 100% solved the problem of not having background color once the notes are many and exceed the original viewport */
+  margin: 0 auto;
+  padding: 0;
+}
+
 #root {
   max-width: 100%/*1280px*/;
   margin: 0 auto;

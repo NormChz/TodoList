@@ -1,7 +1,7 @@
 export function PrivacyPage() {
   return (
     <div>
-      <p>We care about your privacy. Promise!</p>
+      <p style={{marginTop:100}}>We care about your privacy. Promise!</p>
     </div>
   );
 }

@@ -12,6 +12,7 @@ import { getLoggedinUser } from './network/usersApi';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { Welcome } from './components/user/welcome';
 
 
 function App() {
@@ -47,7 +48,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div>
+      <div className={style.mainAppWrapper}>
         <NavBar
           loggedInUser={loggedInUser}
           onSignupClicked={() => { setShowSignup(true) }} // OPEN THE SIGNUP PROMPT (1)
@@ -56,7 +57,7 @@ function App() {
         />
         <Container className={style.pageContainer}>
           <Routes>
-            <Route path='/' element={<NotesPageLoggedInView loggedInUser={loggedInUser} />}></Route>
+            <Route path='/' element={<div className={style.boo}> <NotesPageLoggedInView loggedInUser={loggedInUser} /> <Welcome loggedInUser={loggedInUser}/> </div>}></Route>
             <Route path='/privacy' element={<PrivacyPage />}></Route>
             <Route path='/*' element={<NotFoundPage />}></Route>
           </Routes>
